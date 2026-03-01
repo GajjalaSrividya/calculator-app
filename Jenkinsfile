@@ -1,11 +1,17 @@
 pipeline {
     agent any
 
+    // Disable Jenkins default automatic checkout
+    options {
+        skipDefaultCheckout()
+    }
+
     stages {
 
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/GajjalaSrividya/calculator-app.git'
+                // Explicitly checkout the main branch
+                git branch: 'main', url: 'https://github.com/GajjalaSrividya/calculator-app.git'
             }
         }
 
